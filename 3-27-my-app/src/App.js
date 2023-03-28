@@ -1,4 +1,5 @@
 import Expenses from "./components/Expenses/Expenses";
+import NewExpense from "./components/NewExpense/NewExpense";
 
 const App = () => {
     const expenses = [
@@ -28,9 +29,18 @@ const App = () => {
         },
     ];
 
+    const saveExpenseDataHandler = (enteredExpenseData) => {
+        const expenseData = {
+            ...enteredExpenseData,
+            id: Math.random().toString()
+        }
+        console.log(expenseData);
+    };
+
     return (
         <div>
             <h2>Let's get started!</h2>
+            <NewExpense onSaveExpenseData={saveExpenseDataHandler}/>
             <Expenses expenses={expenses}/>
         </div>
     );
